@@ -20,10 +20,8 @@ Stage 2 covers:
   - `meta_synth.csv` (mapping between original and synthetic filenames)
 
 - `make_flat_pairs.py`  
-  Creates a flat paired dataset folder by copying ORIG + SYNTH images with consistent names:
-  - `pair_<id>_ORIG_*`
-  - `pair_<id>_SYNTH_*`
-  Also writes `pairs_manifest.csv` for tracking pairs.
+  Creates a flat paired dataset folder by copying ORIG + SYNTH images
+
 
 - `baseline vs finetune.ipynb`  
   End-to-end pipeline:
