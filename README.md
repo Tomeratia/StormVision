@@ -1,31 +1,22 @@
-# StormVision - Stage 2 (EDA + YOLO Baseline vs Fine-tuning)
+# StormVision (Stage 2)
 
-Stage 2 covers:
+GenAI-based person-in-water detection in rough seas.
+
+## What this stage covers
 - EDA on the original SeaDroneSee dataset
 - Synthetic image generation + metadata export
 - Building a paired ORIG vs SYNTH flat dataset
-- YOLOv8 baseline vs fine-tuning evaluation on Real vs Synthetic test subsets
-
----
+- YOLOv8 baseline vs fine-tuning evaluation on real vs synthetic test subsets
 
 ## Files
+- `eda_original_data.ipynb` - EDA and sanity checks on the original dataset.
+- `Synthetic Data Generator.ipynb` - Generates synthetic images and exports annotations + metadata.
+- `make_flat_pairs.py` - Creates a flat paired dataset folder by copying ORIG + SYNTH images.
+- `baseline vs finetune.ipynb` - End-to-end YOLO pipeline: baseline vs fine-tune, evaluation and plots.
 
-- `eda_original_data.ipynb`  
-  EDA and sanity checks on the original SeaDroneSee dataset (image-level summaries such as `has_person`, `persons_count`, and bbox-related stats).
-
-- `Synthetic Data Generator.ipynb`  
-  Generates synthetic images and exports:
-  - synthetic images folder
-  - `instances_synth.json` (COCO annotations for synthetic images)
-  - `meta_synth.csv` (mapping between original and synthetic filenames)
-
-- `make_flat_pairs.py`  
-  Creates a flat paired dataset folder by copying ORIG + SYNTH images
-
-
-- `baseline vs finetune.ipynb`  
-  End-to-end pipeline:
-  - prepares a YOLO-ready dataset from the paired images + COCO annotations
-  - trains a fine-tuned YOLOv8 model
-  - compares against a pretrained YOLOv8 baseline
-  - evaluates on ORIG-only vs SYNTH-only test subsets and reports Precision/Recall/F1/mAP50 with plots
+## Folders
+- `data/` - data and intermediate artifacts
+- `notebooks/` - notebooks for EDA, generation, and evaluation
+- `src/` - helper scripts
+- `results/` - exported metrics and figures
+- `presentation/` - slides
