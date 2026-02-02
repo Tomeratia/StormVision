@@ -289,12 +289,12 @@ StormVision/
 │   └── 04_train_and_evaluate.ipynb
 ├── data/                             # Dataset structure (see DATASET_STRUCTURE_AND_INFO.md)
 │   ├── annotations/                  # JSON annotations
-│   ├── processed/                    # YOLO splits & labels
 │   ├── synthetic/                    # Generated stormy images
 │   │   ├── test/
 │   │   └── train/
 │   ├── train/                        # Real training images
-│   └── val/                          # Real validation images
+│   ├── val/                          # Real validation images
+│   └── data.yaml                     # YOLO dataset configuration
 ├── results/                          # Experiment outputs
 │   ├── figures/                      # Pipeline diagrams & examples
 │   ├── metrics/                      # Plots & CSV results
