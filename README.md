@@ -69,7 +69,7 @@ The project consists of two main pipelines:
 
 This pipeline transforms calm-sea maritime images into realistic stormy conditions while preserving all objects.
 
-![Pipeline 1: Synthetic Generation](results/figures/pipeline1_synthetic_generation.png)
+![Pipeline 1: Synthetic Generation](assets/pipeline1_synthetic_generation.png)
 
 | Step | Component | Description |
 |------|-----------|-------------|
@@ -82,7 +82,7 @@ This pipeline transforms calm-sea maritime images into realistic stormy conditio
 
 This pipeline compares multiple YOLO models to evaluate the impact of synthetic data augmentation.
 
-![Pipeline 2: Training & Evaluation](results/figures/pipeline2_training_evaluation.png)
+![Pipeline 2: Training & Evaluation](assets/pipeline2_training_evaluation.png)
 
 | Model | Training Data | Purpose |
 |-------|---------------|---------|
@@ -109,16 +109,16 @@ The synthetic generation pipeline transforms calm-sea images into realistic stor
 <table>
 <tr><th>Original (Calm Sea)</th><th>Synthetic (Stormy Sea)</th></tr>
 <tr>
-<td><img src="results/figures/example1_original.jpg" width="300"/></td>
-<td><img src="results/figures/example1_synthetic.jpg" width="300"/></td>
+<td><img src="assets/example1_original.jpg" width="300"/></td>
+<td><img src="assets/example1_synthetic.jpg" width="300"/></td>
 </tr>
 <tr>
-<td><img src="results/figures/example2_original.jpg" width="300"/></td>
-<td><img src="results/figures/example2_synthetic.jpg" width="300"/></td>
+<td><img src="assets/example2_original.jpg" width="300"/></td>
+<td><img src="assets/example2_synthetic.jpg" width="300"/></td>
 </tr>
 <tr>
-<td><img src="results/figures/example3_original.jpg" width="300"/></td>
-<td><img src="results/figures/example3_synthetic.jpg" width="300"/></td>
+<td><img src="assets/example3_original.jpg" width="300"/></td>
+<td><img src="assets/example3_synthetic.jpg" width="300"/></td>
 </tr>
 </table>
 
@@ -280,6 +280,7 @@ pip install numpy pandas matplotlib seaborn tqdm
 
 ```
 StormVision/
+├── assets/                           # Diagrams & visual examples
 ├── docs/                             # Presentation slides & reports
 ├── notebooks/                        # Jupyter notebooks for the pipeline
 │   ├── 00_setup.ipynb
@@ -296,7 +297,6 @@ StormVision/
 │   ├── val/                          # Real validation images
 │   └── data.yaml                     # YOLO dataset configuration
 ├── results/                          # Experiment outputs
-│   ├── figures/                      # Pipeline diagrams & examples
 │   ├── metrics/                      # Plots & CSV results
 │   └── weights/                      # Trained models
 └── README.md
