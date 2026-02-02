@@ -5,7 +5,7 @@
 [![YOLO](https://img.shields.io/badge/YOLO-v8s-00FFFF.svg)](https://github.com/ultralytics/ultralytics)
 [![Colab](https://img.shields.io/badge/Run%20in-Colab-F9AB00.svg)](https://colab.research.google.com/)
 
-**Maritime Object Detection in Stormy Conditions using Synthetic Data Augmentation**
+**Maritime Object Detection from Aerial Drone Imagery in Stormy Conditions using Synthetic Data Augmentation**
 
 > An end-to-end deep learning pipeline that enhances maritime object detection under adverse weather conditions by generating realistic synthetic stormy sea training data using state-of-the-art diffusion models.
 
@@ -14,7 +14,6 @@
 ## Table of Contents
 
 - [Overview](#overview)
-- [Quick Start](#quick-start)
 - [Pipeline Architecture](#pipeline-architecture)
 - [Synthetic Data Examples](#synthetic-data-examples)
 - [Key Results](#key-results)
@@ -22,6 +21,7 @@
 - [Installation](#installation)
 - [Repository Structure](#repository-structure)
 - [Training](#training)
+- [Quick Start](#quick-start)
 - [Limitations](#limitations)
 - [Acknowledgments](#acknowledgments)
 
@@ -59,28 +59,7 @@ This gap motivates our synthetic data generation approach.
 
 ---
 
-## Quick Start
 
-### Run in Google Colab (Recommended)
-
-```python
-# 1. Install dependencies
-!pip install -q ultralytics diffusers transformers
-!pip install -q git+https://github.com/facebookresearch/segment-anything.git
-
-# 2. Mount Drive
-from google.colab import drive
-drive.mount('/content/drive')
-
-# 3. Run notebooks in order:
-#    00_setup.ipynb          → Environment validation
-#    01_eda.ipynb             → Data exploration
-#    02_synthetic_generation  → Generate stormy images (~4-8 hours)
-#    03_prepare_yolo_data     → Prepare YOLO format (~5 min)
-#    04_train_and_evaluate    → Train models (~2-4 hours)
-```
-
----
 
 ## Pipeline Architecture
 
@@ -159,7 +138,7 @@ The synthetic generation pipeline transforms calm-sea images into realistic stor
 ### Key Findings
 
 - **x10 improvement** over COCO baseline
-- **+36% improvement** on synthetic test (Mixed vs Real_4131)
+- **+18% improvement** on synthetic test (Mixed vs Real_4131)
 - **Robustness**: Mixed model drops only 5% on stormy images vs 28% for Real-only
 
 ![Model Comparison](results/metrics/model_comparison.png)
@@ -202,7 +181,7 @@ The Mixed model trained with synthetic data shows **6x better robustness** compa
 
 This project uses the **SeaDronesSee** dataset for maritime object detection.
 
-**Dataset Link**: [SeaDronesSee on Hugging Face](https://huggingface.co/datasets/Drones343/SeaDronesSee)
+**Dataset Link**: [SeaDronesSee](https://cloud.cs.uni-tuebingen.de/index.php/s/ZZxX65FGnQ8zjBP)
 
 **Citation**:
 ```bibtex
@@ -233,6 +212,30 @@ This project uses the **SeaDronesSee** dataset for maritime object detection.
 | 2 | jetski |
 | 3 | life_saving_appliances |
 | 4 | buoy |
+
+---
+
+###  Generated Dataset Access
+
+Due to size constraints, the full synthetic stormy dataset and processed training sets are hosted externally.
+
+**[Download Full Dataset (Google Drive)](https://drive.google.com/drive/folders/1PY_3dqQqktGkqgg6YDjX8YhKk9sNxQp4?usp=drive_link)**
+
+The drive folder includes:
+*   `train/images`: Mix of real and synthetic training images.
+*   `synthetic/`: The generated stormy images.
+*   `processed/`: Cleaned labels and split files ready for YOLO training.
+*   `DATASET_STRUCTURE_AND_INFO.md`: Detailed guide to the file structure.
+
+---
+
+##  Project Documentation
+
+All project milestones and presentations are available in the `docs/` directory:
+
+*   **Proposal**: [Slides (PDF)](docs/Proposal.pdf)
+*   **Interim Report**: [Slides (PDF)](docs/Interim.pdf)
+*   **Final Presentation**: [Slides (PDF)](docs/Final_Presentation.pdf)
 
 ---
 
@@ -277,22 +280,25 @@ pip install numpy pandas matplotlib seaborn tqdm
 
 ```
 StormVision/
-├── notebooks/
-│   ├── 00_setup.ipynb                # Environment setup
-│   ├── 01_eda.ipynb                  # Exploratory data analysis
-│   ├── 02_synthetic_generation.ipynb # Storm background generation
-│   ├── 03_prepare_yolo_data.ipynb    # Data preparation for YOLO
-│   └── 04_train_and_evaluate.ipynb   # Training & evaluation
-├── data/
-│   ├── train/images/                 # 8,930 training images
-│   ├── val/images/                   # 1,547 test images
-│   ├── annotations/                  # COCO format annotations
-│   ├── synthetic/                    # Generated images
-│   └── processed/                    # YOLO configs & splits
-├── results/
-│   ├── metrics/                      # Evaluation results & charts
+├── docs/                             # Presentation slides & reports
+├── notebooks/                        # Jupyter notebooks for the pipeline
+│   ├── 00_setup.ipynb
+│   ├── 01_eda.ipynb
+│   ├── 02_synthetic_generation.ipynb
+│   ├── 03_prepare_yolo_data.ipynb
+│   └── 04_train_and_evaluate.ipynb
+├── data/                             # Dataset structure (see DATASET_STRUCTURE_AND_INFO.md)
+│   ├── annotations/                  # JSON annotations
+│   ├── processed/                    # YOLO splits & labels
+│   ├── synthetic/                    # Generated stormy images
+│   │   ├── test/
+│   │   └── train/
+│   ├── train/                        # Real training images
+│   └── val/                          # Real validation images
+├── results/                          # Experiment outputs
 │   ├── figures/                      # Pipeline diagrams & examples
-│   └── weights/                      # Trained model weights
+│   ├── metrics/                      # Plots & CSV results
+│   └── weights/                      # Trained models
 └── README.md
 ```
 
@@ -318,6 +324,28 @@ BATCH_SIZE = 16
 EPOCHS = 25
 ```
 
+---
+
+## Quick Start
+
+### Run in Google Colab (Recommended)
+
+```python
+# 1. Install dependencies
+!pip install -q ultralytics diffusers transformers
+!pip install -q git+https://github.com/facebookresearch/segment-anything.git
+
+# 2. Mount Drive
+from google.colab import drive
+drive.mount('/content/drive')
+
+# 3. Run notebooks in order:
+#    00_setup.ipynb          → Environment validation
+#    01_eda.ipynb             → Data exploration
+#    02_synthetic_generation  → Generate stormy images (~4-8 hours)
+#    03_prepare_yolo_data     → Prepare YOLO format (~5 min)
+#    04_train_and_evaluate    → Train models (~2-4 hours)
+```
 ---
 
 ## Limitations
@@ -346,3 +374,4 @@ EPOCHS = 25
 **Built for safer maritime operations**
 
 </div>
+

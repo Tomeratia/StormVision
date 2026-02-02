@@ -1,0 +1,26 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# Environments
+.env
+.venv
+env/
+venv/
+__pycache__/
+
+# IDEs
+.vscode/
+.idea/
+
+# Large/Redundant Folders
+ex/
+גרסא ישנה/
+*.zip
+
+# Data Images (Hosted on Drive)
+data/train/
+data/val/
+data/synthetic/
+
+# Note: Keeping data/processed and data/annotations as they are small and important
