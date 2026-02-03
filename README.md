@@ -5,7 +5,7 @@
 [![YOLO](https://img.shields.io/badge/YOLO-v8s-00FFFF.svg)](https://github.com/ultralytics/ultralytics)
 [![Colab](https://img.shields.io/badge/Run%20in-Colab-F9AB00.svg)](https://colab.research.google.com/)
 
-**Maritime Object Detection from Aerial Drone Imagery in Stormy Conditions using Synthetic Data Augmentation**
+**Small-Object Detection from Aerial Drone Imagery for Maritime Search-and-Rescue in Stormy Sea Conditions Using Diffusion-Based Synthetic Data Augmentation**
 
 > An end-to-end deep learning pipeline that enhances maritime object detection under adverse weather conditions by generating realistic synthetic stormy sea training data using state-of-the-art diffusion models.
 
