@@ -63,7 +63,7 @@ This gap motivates our synthetic data generation approach.
 
 ## Pipeline Architecture
 
-The project consists of two main pipelines:
+The research consists of two main pipelines:
 
 ### Pipeline 1: Synthetic Stormy Sea Image Generation
 
@@ -179,7 +179,7 @@ The Mixed model trained with synthetic data shows **6x better robustness** compa
 
 ### Original Dataset
 
-This project uses the **SeaDronesSee** dataset for maritime object detection.
+This research uses the **SeaDronesSee** dataset for maritime object detection.
 
 **Dataset Link**: [SeaDronesSee](https://cloud.cs.uni-tuebingen.de/index.php/s/ZZxX65FGnQ8zjBP)
 
@@ -229,9 +229,9 @@ The drive folder includes:
 
 ---
 
-##  Project Documentation
+##  Research Documentation
 
-All project milestones and presentations are available in the `docs/` directory:
+All research milestones and presentations are available in the `docs/` directory:
 
 *   **Proposal**: [Slides (PDF)](docs/Proposal.pdf)
 *   **Interim Report**: [Slides (PDF)](docs/Interim.pdf)
